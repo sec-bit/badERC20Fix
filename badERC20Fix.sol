@@ -2,7 +2,7 @@
 
 badERC20 POC Fix by SECBIT Team
 
-USE WITH CARE & NO WARRANTY
+USE WITH CAUTION & NO WARRANTY
 
 REFERENCE & RELATED READING
 - https://github.com/ethereum/solidity/issues/4116
@@ -13,37 +13,6 @@ REFERENCE & RELATED READING
 */
 
 pragma solidity ^0.4.24;
-
-contract TokenStd {
-
-    function transfer(address _to, uint256 _value) public returns (bool success) {
-        return true;
-    }
-
-    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-        return true;
-    }
-    
-    function approve(address _spender, uint256 _value) public returns (bool success) {
-        return true;
-    }
-
-}
-
-
-// NEVER USE THIS
-contract TokenNoStd {
-
-    function transfer(address _to, uint256 _value) public {
-    }
-
-    function transferFrom(address _from, address _to, uint256 _value) public {
-    }
-
-    function approve(address _spender, uint256 _value) public {
-    }
-
-}
 
 library ERC20AsmFn {
 
