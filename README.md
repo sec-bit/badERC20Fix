@@ -51,8 +51,13 @@ contract TokenNoStd {
 
 问题代码主要受权威模板影响：
 
-- openzeppelin-solidity 2017 年 3 月 -- 2017 年 7 月间的 StandardToken [实现](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/52120a8c428de5e34f157b7eaed16d38f3029e66/contracts/token/BasicToken.sol#L16-L20)（已知有1703份）
-- 以太坊官网提供的 Token [合约模板](https://github.com/ethereum/ethereum-org/pull/859)（已知有 990份）
+- openzeppelin-solidity 2017 年 3 月 -- 2017 年 7 月间的 StandardToken [实现](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/52120a8c428de5e34f157b7eaed16d38f3029e66/contracts/token/BasicToken.sol#L16-L20)（已知有 1703 份）
+- 以太坊官网提供的 Token [合约模板](https://github.com/ethereum/ethereum-org/pull/859)（已知有 990 份）
+
+其中：
+
+- 受 openzeppelin 影响的合约不兼容函数包括 `transfer`、`transferFrom` 以及 `approve`
+- 受 ethereum-org 影响的合约不兼容函数包括 `transfer`
 
 ## 面向 DApp 和 DEX 的解决方案
 
@@ -64,4 +69,4 @@ call 方法手动直接调用 transfer()函数，并使用内联 assembly code �
  
 - 如果为其他值则 revert
 
-具体实现可参考本 repo 中的[代码](badERC20Fix.sol)。
+具体实现可参考本 repo 中的[代码](badERC20Fix.sol)，欢迎测试讨论。
