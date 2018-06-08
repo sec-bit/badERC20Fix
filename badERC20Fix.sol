@@ -1,28 +1,59 @@
+/*
+
+badERC20 POC Fix by SECBIT Team
+
+USE WITH CARE & NO WARRANTY
+
+REFERENCE & RELATED READING
+- https://github.com/ethereum/solidity/issues/4116
+- https://medium.com/@chris_77367/explaining-unexpected-reverts-starting-with-solidity-0-4-22-3ada6e82308c
+- https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca
+- https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61
+
+*/
+
 pragma solidity ^0.4.24;
 
 contract TokenStd {
+
     function transfer(address _to, uint256 _value) public returns (bool success) {
         return true;
     }
+
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        return true;
+    }
+    
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        return true;
+    }
+
 }
 
+
+// NEVER USE THIS
 contract TokenNoStd {
+
     function transfer(address _to, uint256 _value) public {
     }
+
+    function transferFrom(address _from, address _to, uint256 _value) public {
+    }
+
+    function approve(address _spender, uint256 _value) public {
+    }
+
 }
 
-library ERC20AsmTransfer {    
-    function asmTransfer(address _erc20Addr, address _to, uint256 _value) internal returns (bool result) {
+library ERC20AsmFn {
 
-        // Must be a contract addr first!
+    function isContract(address addr) internal {
         assembly {
-            if iszero(extcodesize(_erc20Addr)) { revert(0, 0) }
+            if iszero(extcodesize(addr)) { revert(0, 0) }
         }
-        
-        // call return false when something wrong
-        require(_erc20Addr.call(bytes4(keccak256("transfer(address,uint256)")), _to, _value));
-        
-        // handle returndata
+    }
+
+    function handleReturnData() internal returns (bool result) {
         assembly {
             switch returndatasize()
             case 0 { // not a std erc20
@@ -36,18 +67,65 @@ library ERC20AsmTransfer {
                 revert(0, 0)
             }
         }
-        return result;
+    }
+
+    function asmTransfer(address _erc20Addr, address _to, uint256 _value) internal returns (bool result) {
+
+        // Must be a contract addr first!
+        isContract(_erc20Addr);
+        
+        // call return false when something wrong
+        require(_erc20Addr.call(bytes4(keccak256("transfer(address,uint256)")), _to, _value));
+        
+        // handle returndata
+        return handleReturnData();
+    }
+
+    function asmTransferFrom(address _erc20Addr, address _from, address _to, uint256 _value) internal returns (bool result) {
+
+        // Must be a contract addr first!
+        isContract(_erc20Addr);
+
+        // call return false when something wrong
+        require(_erc20Addr.call(bytes4(keccak256("transferFrom(address,address,uint256)")), _from, _to, _value));
+        
+        // handle returndata
+        return handleReturnData();
+    }
+
+    function asmApprove(address _erc20Addr, address _spender, uint256 _value) internal returns (bool result) {
+
+        // Must be a contract addr first!
+        isContract(_erc20Addr);
+
+        // call return false when something wrong
+        require(_erc20Addr.call(bytes4(keccak256("approve(address,uint256)")), _spender, _value));
+        
+        // handle returndata
+        return handleReturnData();
     }
 }
 
 interface ERC20 {
     function transfer(address _to, uint256 _value) returns (bool success);
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    function approve(address _spender, uint256 _value) returns (bool success);
 }
 
 contract TestERC20AsmTransfer {
-    using ERC20AsmTransfer for ERC20;
-    function dexTest(address _token, address _to, uint _amount) public {
-        require(ERC20(_token).asmTransfer(_to, _amount));
+
+    using ERC20AsmFn for ERC20;
+
+    function dexTestTransfer(address _token, address _to, uint256 _value) public {
+        require(ERC20(_token).asmTransfer(_to, _value));
+    }
+
+    function dexTestTransferFrom(address _token, address _from, address _to, uint256 _value) public {
+        require(ERC20(_token).asmTransferFrom(_from, _to, _value));
+    }
+
+    function dexTestApprove(address _token, address _spender, uint256 _value) public {
+        require(ERC20(_token).asmApprove(_spender, _value));
     }
 }
 
