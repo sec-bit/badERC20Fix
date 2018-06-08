@@ -70,3 +70,7 @@ call 方法手动直接调用 transfer()函数，并使用内联 assembly code �
 - 如果为其他值则 revert
 
 具体实现可参考本 repo 中的[代码](badERC20Fix.sol)，欢迎测试讨论。
+
+此外，[Lukas Cremer](https://gist.github.com/lukas-berlin/0f7005301f29e3881ad15449e68c2486#file-gistfile1-txt)和[BrendanChou](https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61)的修复方案直接利用了非标准的`function transfer(address to, uint value) external`接口来进行函数调用。
+
+我们认为应该尽量避免此种写法，社区理应推广符合 ERC20 标准的接口。
