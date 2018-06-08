@@ -51,13 +51,15 @@ contract TokenNoStd {
 
 问题代码主要受权威模板影响：
 
-- openzeppelin-solidity 2017 年 3 月 -- 2017 年 7 月间的 StandardToken [实现](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/52120a8c428de5e34f157b7eaed16d38f3029e66/contracts/token/BasicToken.sol#L16-L20)（已知有 1703 份）
-- 以太坊官网提供的 Token [合约模板](https://github.com/ethereum/ethereum-org/pull/859)（已知有 990 份）
+- openzeppelin-solidity 2017 年 3 月 -- 2017 年 7 月间的 StandardToken [实现](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/52120a8c428de5e34f157b7eaed16d38f3029e66/contracts/token/BasicToken.sol#L16-L20)（源码公开可验证的已知 292 份）
+- 以太坊官网提供的 Token [合约模板](https://github.com/ethereum/ethereum-org/pull/859/commits/3b392422ec7ed7ffc2c94babdc851ec3130ffc12)（已知 1703 份）
 
 其中：
 
 - 受 openzeppelin 影响的合约不兼容函数包括 `transfer`、`transferFrom` 以及 `approve`
 - 受 ethereum-org 影响的合约不兼容函数包括 `transfer`
+
+受以太坊官网模版代码影响的代码数量巨大，已提交 PRs [[1]](https://github.com/ethereum/ethereum-org/pull/859) [[2]](https://github.com/ethereum/ethereum-org/pull/862) [[3]](https://github.com/ethereum/ethereum-org/pull/863) 修复并被合并。
 
 ## 面向 DApp 和 DEX 的解决方案
 
