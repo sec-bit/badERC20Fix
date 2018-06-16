@@ -1,4 +1,4 @@
-# badERC20Fix
+# badERC20Fix  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 大量 ERC20 Token 合约没有遵守 EIP20 [规范](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)，这些非标准合约将会对 DAPP 的开发生态造成严重影响。
 
@@ -76,3 +76,7 @@ call 方法手动直接调用 transfer()函数，并使用内联 assembly code �
 此外，[Lukas Cremer](https://gist.github.com/lukas-berlin/0f7005301f29e3881ad15449e68c2486#file-gistfile1-txt)和[BrendanChou](https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61)的修复方案直接利用了非标准的`function transfer(address to, uint value) external`接口来进行函数调用。
 
 我们认为应该尽量避免此种写法，社区理应推广符合 ERC20 标准的接口。
+
+## 版权声明
+
+[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
