@@ -1,10 +1,10 @@
-# badERC20Fix  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# badERC20Fix  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Join the chat at https://gitter.im/sec-bit/Lobby](https://badges.gitter.im/sec-bit/Lobby.svg)](https://gitter.im/sec-bit/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 大量 ERC20 Token 合约没有遵守 EIP20 [[1]](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)，这些非标准合约将会对 DApp 的开发生态造成严重影响。
 
 特别是自从今年4月17日，以太坊的智能合约语言编译器 Solidity 升级至 0.4.22 版本后，编译产生的合约代码将会无法兼容一些非标准的智能合约 [[2]](https://github.com/ethereum/solidity/issues/4116)，这会对 DApp 开发带来很大的困扰 [[3]](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca)。
 
-其他细节参考 SECBIT（安比）实验室早前的详细报告 [[4]](https://mp.weixin.qq.com/s/1MB-t_yZYsJDTPRazD1zAA)[[5]](https://medium.com/loopring-protocol/an-incompatibility-in-smart-contract-threatening-dapp-ecosystem-72b8ca5db4da)，下面将着重介绍兼容方案的技术细节、使用场景和成本估算。
+其他细节参考 SECBIT（安比）实验室早前的详细报告 [[4]](https://mp.weixin.qq.com/s/1MB-t_yZYsJDTPRazD1zAA)[[5]](https://medium.com/loopring-protocol/an-incompatibility-in-smart-contract-threatening-dapp-ecosystem-72b8ca5db4da)，下面将着重介绍兼容方案的技术细节、使用场景和成本估算。
 
 ## 存在返回值兼容性问题的 Token （仅限已被 CoinMarketCap 收录）
 
@@ -83,11 +83,11 @@ contract DApp {
 
 这段代码所做的就是调用目标 ERC20 合约的 transfer 函数，同样一段代码使用 Solidity 0.4.21 和 0.4.22 编译结果分别如下：
 
-0.4.21
+### 0.4.21
 
 ![0.4.21](img/dis_0421.png)
 
-0.4.22
+### 0.4.22
 
 ![0.4.22](img/dis_0422.png)
 
@@ -156,7 +156,7 @@ memory[destOffset:destOffset+length] = RETURNDATA[offset:offset+length]
 
 注意，务必正确处理以上函数的返回值。
 
-经测算，使用 `asmTransfer` 函数，每次 transfer 会多出约 244 的 Gas 消耗。实际上我们还可以做一些优化，直接使用函数签名计算结果进行调用。
+经测算，使用 `asmTransfer` 函数，每次 transfer 会多出约 244 的 Gas 消耗。实际上我们还可以做一些优化，直接使用函数签名计算结果进行调用。
 
 ```js
 require(_erc20Addr.call(bytes4(keccak256("transfer(address,uint256)")), _to, _value));
@@ -168,11 +168,11 @@ require(_erc20Addr.call(bytes4(keccak256("transfer(address,uint256)")), _to, _va
 require(_erc20Addr.call(0xa9059cbb, _to, _value));
 ```
 
-这样会将多出的 Gas 消耗由 **244** 降为 **96**。
+这样会将多出的 Gas 消耗由 **244** 降为 **96**。
 
-SECBIT（安比）实验室会持续关注此 ERC20 安全和兼容性问题的最新进展，为广大开发者提供最安全最高效的解决方案。同时欢迎开发者积极讨论，为安全开源社区建设贡献宝贵力量。
+SECBIT（安比）实验室会持续关注此 ERC20 安全和兼容性问题的最新进展，为广大开发者提供最安全最高效的解决方案。同时欢迎开发者积极讨论，为安全开源社区建设贡献宝贵力量。
 
-## Reference
+## Reference
 
 - [1] EIP20 规范文档 https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
 
