@@ -8,11 +8,11 @@
 
 ## 存在返回值兼容性问题的 Token （仅限已被 CoinMarketCap 收录）
 
-DApp 和 DEX 开发者如需获取不兼容 Token 列表，可访问 [awesome-buggy-erc20-tokens](https://github.com/sec-bit/awesome-buggy-erc20-tokens) 仓库。
+DApp 和 DEX 开发者如需获取不兼容 Token 列表，可关注 [awesome-buggy-erc20-tokens](https://github.com/sec-bit/awesome-buggy-erc20-tokens) 仓库。
 
-- [transfer-no-return](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transfer-no-return_o.csv)
-- [transferFrom-no-return](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transferFrom-no-return_o.csv)
-- [approve-no-return](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/approve-no-return_o.csv)
+- [transfer() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transfer-no-return_o.csv)
+- [transferFrom() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transferFrom-no-return_o.csv)
+- [approve() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/approve-no-return_o.csv)
 
 ## 符合标准的 ERC20 代码
 
@@ -156,7 +156,7 @@ memory[destOffset:destOffset+length] = RETURNDATA[offset:offset+length]
 
 注意，务必正确处理以上函数的返回值。
 
-经测算，使用 `asmTransfer` 函数，每次 transfer 会多出约 244 的 Gas 消耗。实际上我们还可以做一些优化，直接使用函数签名计算结果进行调用。
+经测算，使用 `asmTransfer` 函数，每次 `transfer()` 会多出约 244 的 Gas 消耗。实际上我们还可以做一些优化，直接使用函数签名计算结果进行调用。
 
 ```js
 require(_erc20Addr.call(bytes4(keccak256("transfer(address,uint256)")), _to, _value));
