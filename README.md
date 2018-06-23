@@ -85,11 +85,11 @@ contract DApp {
 
 ### 0.4.21
 
-![0.4.21](img/dis_0421.png)
+<img src="img/dis_0421.png" alt="0.4.21" width="70%"/>
 
 ### 0.4.22
 
-![0.4.22](img/dis_0422.png)
+<img src="img/dis_0422.png" alt="0.4.22" width="70%"/>
 
 很明显，0.4.22 版本编译出的 bytecode，加入了对 RETURNDATASIZE 是否小于 32 的检查。如果目标合约是无 return 值的写法，则无法通过这个检查，从而导致 revert 发生。相对应的解决方案就是绕过编译器自动生成的 RETURNDATASIZE 判断，进行手动处理。
 
