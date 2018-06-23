@@ -174,19 +174,19 @@ SECBIT（安比）实验室会持续关注此 ERC20 安全和兼容性问题的�
 
 ## Reference
 
-- [1] EIP20 规范文档 https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
+- [1] EIP20 规范文档, https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
 
-- [2] Solidity 项目相关 Issue 讨论 https://github.com/ethereum/solidity/issues/4116
+- [2] Solidity 项目相关 Issue 讨论, https://github.com/ethereum/solidity/issues/4116
 
-- [3] Lukas Cremer 的报道 https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca
+- [3] Lukas Cremer 的报道, https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca
 
-- [4] SECBIT（安比）实验室关于 Token 合约不兼容问题的报告https://mp.weixin.qq.com/s/1MB-t_yZYsJDTPRazD1zAA
+- [4] SECBIT（安比）实验室关于 Token 合约不兼容问题的报告, https://mp.weixin.qq.com/s/1MB-t_yZYsJDTPRazD1zAA
 
 - [5] An Incompatibility in Ethereum Smart Contract Threatening dApp Ecosystem, https://medium.com/loopring-protocol/an-incompatibility-in-smart-contract-threatening-dapp-ecosystem-72b8ca5db4da
 
-- [6] Lukas Cremer 的方案 https://gist.github.com/lukas-berlin/0f7005301f29e3881ad15449e68c2486#file-gistfile1-txt
+- [6] Lukas Cremer 的方案, https://gist.github.com/lukas-berlin/0f7005301f29e3881ad15449e68c2486#file-gistfile1-txt
 
-- [7] BrendanChou 的方案 https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61
+- [7] BrendanChou 的方案, https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61
 
 ## 版权声明
 
