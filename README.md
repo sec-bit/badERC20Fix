@@ -62,7 +62,7 @@ It mainly affects the 2 sides below:
 - Several non-standard Token contracts are not able to perform transactions normally
 - Part of tokens monitored by the contract might get locked forever
 
-It is safe to say that a growing number of ERC20 Token API callings would fail(functions like transfer() would fail in the end due to revert conducted by EVM) as lots of DApps get upgraded.
+It is safe to say that a growing number of ERC20 Token API callings would fail(functions like `transfer()` would fail in the end due to revert conducted by EVM) as lots of DApps get upgraded.
 
 
 ## Analysis
