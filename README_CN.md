@@ -6,7 +6,7 @@
 
 其他细节参考 SECBIT（安比）实验室早前的详细报告 [[4]](https://mp.weixin.qq.com/s/1MB-t_yZYsJDTPRazD1zAA)[[5]](https://medium.com/loopring-protocol/an-incompatibility-in-smart-contract-threatening-dapp-ecosystem-72b8ca5db4da)，下面将着重介绍兼容方案的技术细节、使用场景和成本估算。
 
-## 存在返回值兼容性问题的 Token （仅限已被 CoinMarketCap 收录）
+## 存在返回值兼容性问题的 Token
 
 DApp 和 DEX 开发者如需获取不兼容 Token 列表，可关注 [awesome-buggy-erc20-tokens](https://github.com/sec-bit/awesome-buggy-erc20-tokens) 仓库。
 

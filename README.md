@@ -10,7 +10,7 @@ Specially, after Solidity compiler's upgrading to version 0.4.22 on April 17th, 
 
 Please refer to SECBIT team's former reports for details [[4]](https://mp.weixin.qq.com/s/1MB-t_yZYsJDTPRazD1zAA)[[5]](https://medium.com/loopring-protocol/an-incompatibility-in-smart-contract-threatening-dapp-ecosystem-72b8ca5db4da). We would introduce this solution in areas of analysis, application scenarios and gas estimation.
 
-## Token Contracts with Return-Value Incompatibility(Tokens in CoinMarketCap Only)
+## Token Contracts with Return-Value Incompatibility
 
 If you want to get a list of incompatible Token contracts for DApp and DEX developing, please refer to [awesome-buggy-erc20-tokens](https://github.com/sec-bit/awesome-buggy-erc20-tokens) repo.
 
