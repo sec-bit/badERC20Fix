@@ -10,9 +10,9 @@
 
 DApp 和 DEX 开发者如需获取不兼容 Token 列表，可关注 [awesome-buggy-erc20-tokens](https://github.com/sec-bit/awesome-buggy-erc20-tokens) 仓库。
 
-- [transfer() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transfer-no-return_o.csv)
-- [transferFrom() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transferFrom-no-return_o.csv)
-- [approve() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/approve-no-return_o.csv)
+- [transfer() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transfer-no-return.o.csv)
+- [transferFrom() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transferFrom-no-return.o.csv)
+- [approve() 不兼容](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/approve-no-return.o.csv)
 
 ## 符合标准的 ERC20 代码
 

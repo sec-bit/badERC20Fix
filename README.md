@@ -14,9 +14,9 @@ Please refer to SECBIT team's former reports for details [[4]](https://mp.weixin
 
 If you want to get a list of incompatible Token contracts for DApp and DEX developing, please refer to [awesome-buggy-erc20-tokens](https://github.com/sec-bit/awesome-buggy-erc20-tokens) repo.
 
-- [Incompatible transfer()](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transfer-no-return_o.csv)
-- [Incompatible transferFrom()](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transferFrom-no-return_o.csv)
-- [Incompatible approve()](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/approve-no-return_o.csv)
+- [Incompatible transfer()](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transfer-no-return.o.csv)
+- [Incompatible transferFrom()](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/transferFrom-no-return.o.csv)
+- [Incompatible approve()](https://github.com/sec-bit/awesome-buggy-erc20-tokens/blob/master/csv/approve-no-return.o.csv)
 
 ## Code Satisfying ERC20 Specification
 
