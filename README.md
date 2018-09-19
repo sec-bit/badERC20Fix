@@ -156,7 +156,7 @@ We suggest not to follow this pattern, as the community is supposed to promote i
 
 DApp and DEX developers using Solidity 0.4.22 and above should load the encapsulated ERC20AsmFn Library in the repo and apply to the standard ERC20 contract (`using ERC20AsmFn for ERC20`).
 
-Substitue `asmTransfer()`, `asmTransferFrom()` and `asmApprove()` for `transfer()`, `transferFrom()`, `approve()` when it comes to calling an ERC20 Token contract.
+Substitute `asmTransfer()`, `asmTransferFrom()` and `asmApprove()` for `transfer()`, `transferFrom()`, `approve()` when it comes to calling an ERC20 Token contract.
 
 Please handle return values in functions above accordingly.
 
